@@ -1,0 +1,25 @@
+<div class="form-group">
+<a ui-sref="newTag" class="btn-primary btn-lg nodecoration">Add New Tag</a>
+</div>
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+    <input type="text" class="form-control" placeholder="Search Tags" ng-model="searchTags">
+  </div>      
+</div>
+<table class="table table-striped table-hover">
+    <tr>
+        <td><h3>All Tags</h3></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="tag in tags | filter:searchTags">
+        <td class="col-md-8">
+            <img ng-src="{{tag.image}}" alt="{{tag.title}}" class="img-thumbnail" style="width:60px;"> - {{tag.title}}
+        </td>
+        <td class="col-md-4">
+            <a class="btn btn-primary" ui-sref="viewTag({id:tag.id})">Show</a>
+            <a class="btn btn-warning" ui-sref="editTag({id:tag.id})">Edit</a>
+            <a class="btn btn-danger"  ng-click="deleteTag(tag)">Delete</a>
+        </td>
+    </tr>
+</table>

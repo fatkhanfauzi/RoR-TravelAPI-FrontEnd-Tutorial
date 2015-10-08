@@ -1,0 +1,29 @@
+<div class="col-centered">
+    <img ng-src="{{tag.image}}" alt="{{tag.title}}" class="img-thumbnail center-block" style="width:100%; height:300px;">
+</div>
+<h3>Destinations for {{tag.title}}</h3>
+<hr />
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+    <input type="text" class="form-control" placeholder="Search Destinations" ng-model="searchDestinations">
+</div>      
+</div>
+<div class="row">
+    <div class="col-md-4 center-block" ng-repeat="destination in tag.destinations | filter:searchDestinations">
+        <img ng-src="{{destination.image}}" alt="{{destination.name}}" class="img-thumbnail center-block"/>
+        <br />
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a ui-sref="viewDestination({id:destination.id})">Show</a></li>
+            <li><a ui-sref="editDestination({id:destination.id})">Edit</a></li>
+            <li><a ng-click="deleteDestination(destination)">Delete</a></li>
+        </ul>
+        <h4 class="pull-left">&nbsp;{{destination.name}} </h4>
+    </div>
+</div>
+</div>
+<br />
